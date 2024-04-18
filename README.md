@@ -65,20 +65,20 @@ Then, after installing poetry simply execute `poetry run sync` to run the script
 
 By default, WikiJS LDAP Group Sync uses environment variables however you can also provide a `.env` file in the main execution directory.
 
-| Environment Variable             | Example                                                                                       | Meaning                                                    |
-|----------------------------------|-----------------------------------------------------------------------------------------------|------------------------------------------------------------|
-| WIKIJS_URL                       | "https://wiki.example.com/graphql"                                                            | URL of the WikiJS GraphQL endpoint                         |
-| WIKIJS_TOKEN                     | "Bearer rVcMvDUsAAv4abPxcIEg"                                                                 | Used for authenticating to GraphQL [^1]                    |
-| LDAP_URL                         | "ldaps://ldap.example.com:636"                                                                | URL of the LDAP Server [^2]                                |
-| ADMIN_BIND_DN                    | "UID=admin,CN=Users,DC=example,DC=com"                                                        | DN used for authenticating to LDAP                         |
-| ADMIN_BIND_CRED                  | "supersecretpassword"                                                                         | Password used for authenticating to LDAP                   |
-| GROUPS_SEARCH_BASE               | "CN=Groups,DC=example,DC=com"                                                                 | LDAP base groups will be searched for under                |
-| GROUPS_SEARCH_FILTER             | "(objectClass=posixGroup)"                                                                    | LDAP group search filter                                   |
-| USER_SEARCH_BASE                 | "CN=Users,DC=example,DC=com"                                                                  | LDAP base users will be searched for under                 |
-| USER_SEARCH_FILTER               | "(&(objectClass=organizationalPerson)(memberof=CN=Domain Users,CN=Groups,DC=example,DC=com))" | LDAP user search filter                                    |
-| (optional) LOG_LEVEL             | (default) "INFO"                                                                              | Log level to be used [^3]                                  |
-| (optional) LDAP_TLS_VERIFICATION | any value                                                                                     | If this value is set the certificate will be verified [^4] |
-| (untested) LDAP_TLS_CERT_FILE    | "/etc/ldap/cacert/cacert.pem"                                                                 | Path to a certificate [^4]                                 |
+| Environment Variable             | Example                                                                                       | Meaning                                                                  |
+|----------------------------------|-----------------------------------------------------------------------------------------------|--------------------------------------------------------------------------|
+| WIKIJS_URL                       | "https://wiki.example.com/graphql"                                                            | URL of the WikiJS GraphQL endpoint                                       |
+| WIKIJS_TOKEN                     | "Bearer rVcMvDUsAAv4abPxcIEg"                                                                 | Used for authenticating to GraphQL [^1]                                  |
+| LDAP_URL                         | "ldaps://ldap.example.com:636"                                                                | URL of the LDAP Server [^2]                                              |
+| (optional) ADMIN_BIND_DN         | "UID=admin,CN=Users,DC=example,DC=com"                                                        | DN used for authenticating to LDAP, leave empty for anonymous bind       |
+| (optional) ADMIN_BIND_CRED       | "supersecretpassword"                                                                         | Password used for authenticating to LDAP, leave empty for anonymous bind |
+| GROUPS_SEARCH_BASE               | "CN=Groups,DC=example,DC=com"                                                                 | LDAP base groups will be searched for under                              |
+| GROUPS_SEARCH_FILTER             | "(objectClass=posixGroup)"                                                                    | LDAP group search filter                                                 |
+| USER_SEARCH_BASE                 | "CN=Users,DC=example,DC=com"                                                                  | LDAP base users will be searched for under                               |
+| USER_SEARCH_FILTER               | "(&(objectClass=organizationalPerson)(memberof=CN=Domain Users,CN=Groups,DC=example,DC=com))" | LDAP user search filter                                                  |
+| (optional) LOG_LEVEL             | (default) "INFO"                                                                              | Log level to be used [^3]                                                |
+| (optional) LDAP_TLS_VERIFICATION | any value                                                                                     | If this value is set the certificate will be verified [^4]               |
+| (untested) LDAP_TLS_CERT_FILE    | "/etc/ldap/cacert/cacert.pem"                                                                 | Path to a certificate [^4]                                               |
 
 
 [^1]: Authentication tokens can be generated in the WikiJS Admin Panel under "API Access"
