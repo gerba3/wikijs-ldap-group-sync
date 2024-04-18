@@ -44,11 +44,21 @@ docker build -t macbrayne/wikijs-ldap-group-sync 'https://github.com/macbrayne/w
 
 ### Poetry
 
-Depending on your distribution you might have to install additional dependencies before being able to use the script.
-In case of Debian based distributions these dependencies might be:
+Using this script requires the use of the [poetry Python
+package](https://python-poetry.org/) packaging utility. On Debian like systems
+it can be installed with the following command:
+
 ```bash
-apt-get install --no-install-recommends build-essential libsasl2-dev libldap2-dev
+apt-get install --no-install-recommends python3-poetry
 ```
+
+Before running the sync, you need to install the dependencies using poetry,
+which will also automatically create a virtual environment:
+
+```bash
+poetry install
+```
+
 Then, after installing poetry simply execute `poetry run sync` to run the script.
 
 ## Configuration
@@ -70,7 +80,8 @@ By default, WikiJS LDAP Group Sync uses environment variables however you can al
 | (optional) LDAP_TLS_VERIFICATION | any value                                                                                     | If this value is set the certificate will be verified [^4] |
 | (untested) LDAP_TLS_CERT_FILE    | "/etc/ldap/cacert/cacert.pem"                                                                 | Path to a certificate [^4]                                 |
 
-[^1]: Authentication tokens can be generated in the WikiJS Admin Panel under "API Access" 
+
+[^1]: Authentication tokens can be generated in the WikiJS Admin Panel under "API Access"
 
 [^2]: Note that you have to also set "LDAP_TLS_VERIFICATION" if you want the certificate to be validated
 

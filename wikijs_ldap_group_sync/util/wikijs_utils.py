@@ -1,7 +1,7 @@
-from graphqlclient import GraphQLClient
-
 import json
 import logging
+
+from graphqlclient import GraphQLClient
 
 from .classes import WikiUser
 
@@ -38,7 +38,7 @@ def create_wikijs_group(client: GraphQLClient, name: str):
       }
     }
     ''', variables={'name': name})
-    return _result["data"]["groups"]["create"]["group"]["id"]
+    return json.loads(_result)["data"]["groups"]["create"]["group"]["id"]
 
 def sync_group_membership(client: GraphQLClient, group_id: int, users: list, ldap_users: list):
     logger.info(f"Attempting to assign group id {group_id} to the following users: {users}")
