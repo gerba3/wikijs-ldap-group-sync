@@ -49,7 +49,7 @@ package](https://python-poetry.org/) packaging utility. On Debian like systems
 it can be installed with the following command:
 
 ```bash
-apt-get install --no-install-recommends python3-poetry
+apt-get install --no-install-recommends python3-poetry build-essential libsasl2-dev libldap2-dev
 ```
 
 Before running the sync, you need to install the dependencies using poetry,
